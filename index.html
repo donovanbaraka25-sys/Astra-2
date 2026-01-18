@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular App</title>
+    <link rel="stylesheet" href="styles/shell.css">
+    
+    <style src = "styles/shell.css"></style>
+    
+    
+</head>
+<body>
+    <div class="top-bar">
+    <button id="menu-btn" onclick="toggleMenu()">☰</button>
+   
+</div>
+
+<div id="side-drawer" class="drawer">
+    <button class="close-btn" onclick="toggleMenu()">×</button>
+    <div class="drawer-links">
+        <button onclick="loadModule('profile'); toggleMenu()">👤 Profile</button>
+        <button onclick="loadModule('settings'); toggleMenu()">⚙️ Settings</button>
+        <button onclick="loadModule('about'); toggleMenu()">ℹ️ About</button>
+    </div>
+</div>
+
+<main id="main-stage">
+    <div id="default-home">
+        <div class="header-visual">
+    <h1 id="user-greeting">Jambo!</h1> 
+    <p id="user-motto">Your journey toward mastery continues.</p>
+    
+    <div class="identity-badge">
+        <small>My Unique Learner Identity</small>
+        <div id="user-upi">UPI: ——— ——— ———</div>
+    </div>
+</div>
+
+        <div class="page-content">
+            </div>
+            
+            <button onclick="console.log('hello there legend')";>Baraka</button>
+            
+    </div>
+
+    <div id="module-container" style="display: none;"></div>
+</main>
+
+
+
+
+    <nav class="bottom-nav">
+        <button onclick="loadModule('home')">🏠 Home</button>
+        <button onclick="loadModule('library')">​📚 Library</button></button>
+        <button onclick="loadModule('tools')">🛠 Tools</button>
+    </nav>
+    <div id="name-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>What's your name?</h2>
+        <input type="text" id="name-input" placeholder="Type name here...">
+        <button onclick="saveName()">Let's Go</button>
+    </div>
+</div>
+
+
+    <script src="scripts/dispatcher.js"></script>
+<script src="scripts/theme.js"></script>
+<script>
+    console.log("System Online.");
+    // Auto-load Home immediately
+    window.onload = () => loadModule('home');
+</script>
+</body>
+</html>
+
+
+</body>
+</html>
+
+
+</body>
+</html>

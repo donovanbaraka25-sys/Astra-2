@@ -1,0 +1,270 @@
+/* =========================================
+   1. CORE SETTINGS & RESET
+   ========================================= */
+:root {
+    --friendly-blue: #3b82f6;   
+    --soft-surface: #ffffff;    
+    --kind-gray: #64748b;       
+    --calm-bg: #f8fafc;         
+    --text-dark: #0f172a;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--calm-bg);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* =========================================
+   2. THE SHELL (Navigation & Bars)
+   ========================================= */
+.top-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    z-index: 10;
+    box-sizing: border-box;
+}
+#menu-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: var(--friendly-blue);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex; /* Always flex */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+    /* The Fix: Smooth Fade for the button itself */
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+}
+
+/* When on the home page, fade it in */
+.home-page #menu-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    padding: 15px 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    z-index: 100;
+}
+
+.bottom-nav button {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: var(--kind-gray);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+/* =========================================
+   3. MODULE STAGE (The Content Area)
+   ========================================= */
+#main-stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* =========================================
+   4. HOME-SPECIFIC STYLES (Scoped)
+   ========================================= */
+/* These only trigger when the Home module is active */
+
+#main-stage .header-visual {
+    position: relative;
+    background: radial-gradient(circle at top left, #e0f2fe 0%, #f8fafc 100%);
+    padding: 100px 30px 60px 30px;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+#main-stage .header-visual h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    letter-spacing: -2px;
+    color: var(--text-dark);
+    font-weight: 800;
+}
+
+#main-stage .identity-badge {
+    margin-top: 25px;
+    background: white;
+    color: var(--friendly-blue);
+    padding: 8px 18px;
+    border-radius: 50px;
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Specific button styling for Home & Modal only */
+#main-stage button.primary-btn, 
+.modal-content button {
+    background: var(--friendly-blue);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* =========================================
+   5. SYSTEM DRAWERS & MODALS
+   ========================================= */
+.drawer {
+    position: fixed;
+    top: 0; left: -280px;
+    width: 280px; height: 100%;
+    background: white;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-out;
+    z-index: 2000;
+}
+
+.drawer.open { left: 0; }
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(8px);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    width: 85%;
+    max-width: 350px;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+/* Smooth Transition Classes */
+#main-stage {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.fade-in {
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#side-drawer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    transform: translateX(-100%); /* Hidden state */
+    transition: transform 0.3s ease-out;
+    z-index: 1000;
+}
+
+#side-drawer.open {
+    transform: translateX(0); /* Visible state */
+}
+.radar-stage {
+    background: #001219;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #00f5d4;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.radar {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    background: #00f5d4;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #00f5d4;
+    z-index: 10;
+}
+
+.ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #00f5d4;
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulse 4s linear infinite;
+    animation-delay: var(--d);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}

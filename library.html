@@ -1,0 +1,54 @@
+<div id="library-view" class="library-container">
+
+    <div class="library-header">
+        <h2 class="section-title">Knowledge Base</h2>
+        <p class="section-subtitle">Select a data stream to begin.</p>
+    </div>
+
+    <div class="filter-bar">
+        <button class="filter-chip active" onclick="filterLibrary('all', this)">All Data</button>
+        <button class="filter-chip" onclick="filterLibrary('Environment', this)">🌿 Bio-Sys</button>
+        <button class="filter-chip" onclick="filterLibrary('Numbers', this)">🔢 Logic</button>
+        <button class="filter-chip" onclick="filterLibrary('Creative', this)">🎨 Creative</button>
+    </div>
+
+    <div class="module-grid" id="library-grid">
+        </div>
+
+    <div id="lib-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modal-title">Module Title</h3>
+                <button class="close-btn" onclick="closeLibModal()">×</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="status-row">
+                    <span id="modal-strand" class="tag">Strand: Logic</span>
+                    <span id="modal-storage" class="tag outline">💾 Offline</span>
+                </div>
+
+                <div class="mission-box">
+                    <h4>Current Objective:</h4>
+                    <p id="modal-mission">Identify 3 variables in the equation.</p>
+                </div>
+
+                <div class="rubric-container">
+                    <div class="rubric-labels">
+                        <span>Proficiency</span>
+                        <span id="modal-level">AE (Approaching)</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="modal-bar" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <button class="action-btn">Initialize Module</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="styles/library_styles.css">
+<script src="scripts/library_logic.js"></script>

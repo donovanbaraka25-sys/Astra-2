@@ -1,0 +1,57 @@
+<div class="lab-dashboard">
+    <h2 class="lab-title">Scientific Modules</h2>
+    
+    <div class="launchpad-grid">
+        <div class="module-card" onclick="loadTool('chat')">
+            <div class="module-icon">💬</div>
+            <h3>System Chat</h3>
+            <p>Access terminal communication</p>
+        </div>
+
+        <div class="module-card" onclick="loadTool('animations')">
+            <div class="module-icon">🌀</div>
+            <h3>Quantum Vortex</h3>
+            <p>Run kinetic visual simulations</p>
+        </div>
+
+        <div class="module-card locked">
+            <div class="module-icon">🔒</div>
+            <h3>Module 03</h3>
+            <p>Awaiting Lab Research...</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .lab-dashboard { padding: 20px; text-align: center; color: white; }
+    .lab-title { margin-bottom: 30px; letter-spacing: 2px; color: #00d2ff; }
+
+    .launchpad-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .module-card {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        padding: 20px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .module-card:hover {
+        background: #222;
+        border-color: #00d2ff;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2);
+    }
+
+    .module-icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .module-card h3 { font-size: 1.1rem; margin: 10px 0; color: #fff; }
+    .module-card p { font-size: 0.8rem; color: #888; }
+
+    .locked { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+</style>

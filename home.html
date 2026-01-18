@@ -1,0 +1,27 @@
+<div class="header-visual">
+    <button id="menu-trigger" onclick="homeManager.toggleMenu(true)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </button>
+
+    <h1 id="user-greeting">Jambo!</h1> 
+    <p id="user-motto">Your journey toward mastery continues.</p>
+    
+    <div class="identity-badge">
+        <small>ID STATUS: ACTIVE</small>
+        <div id="user-upi">UPI: ——— ——— ———</div>
+ 
+    </div>
+    
+    
+    <div id="name-modal-overlay" class="modal-overlay">
+    <div class="name-modal">
+        <h3>Karibu!</h3>
+        <p>What should we call you on this journey?</p>
+        <input type="text" id="name-input-field" placeholder="Enter your name..." maxlength="15">
+        <button onclick="homeManager.saveNameFromModal()">Start Journey</button>
+    </div>
+</div>
+
+</div>
